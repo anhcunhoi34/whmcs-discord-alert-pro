@@ -3,40 +3,41 @@
 
 > Real-time WHMCS Notifications to Discord  
 > Developed & Secured by **Kamrul**  
-> 🔗 [kamrul.us](https://kamrul.us) | 📘 [facebook.com/elitekamrul](https://facebook.com/elitekamrul)
+> 🔗 https://kamrul.us | 📘 https://facebook.com/elitekamrul
 
 ---
 
 ## 🚀 Overview
 
-**Discord Alert Pro** is the most advanced and secured WHMCS-to-Discord notification module.  
-Built with precision, privacy, and performance — it delivers rich ticket alerts with staff tracking, location info, and more.
+**Discord Alert Pro** is a professional-grade WHMCS-to-Discord notification system.  
+It shows staff name, client IP & flag, ticket info, and sends beautifully styled embeds to Discord — securely and smartly.
 
 ---
 
 ## ✅ Features
 
-- 🔧 Simple WHMCS Admin Setup  
-- 🧑‍💻 Responding Staff Name Shown  
-- 🌐 Client Country & Flag (via IP)  
-- 📛 Discord Role Mentions  
-- 🎨 Color-coded Embed Messages  
-- 🖼 Custom Avatar & Sender Name  
-- 🕐 Auto Date-Time & Timezone Display  
-- 🧠 Dual IP Geo API Fallback  
-- 🔐 Developer Lock System (`143.key`)  
-- 💤 Silent Mode Toggle (no alerts if enabled)  
-- 🕓 Last Reply Time of Ticket  
-- ✅ No database required — Fully file-based!
+- 🧑‍💻 Staff responder name in message
+- 🌐 Auto country flag from client IP (dual API fallback)
+- 📛 Discord role mentions (via ID)
+- 🎨 Color-coded embed (custom per rule)
+- 🖼 Avatar + Sender Name
+- 🕐 Auto Time + Timezone
+- 🕓 Last Reply Time (relative)
+- 🔐 Developer Lock via `143.key`
+- 💤 Silent Mode (no webhook if enabled)
+- 🧠 No database used – file-based logic
+- 📊 Daily file-based reply counter (optional)
+- 🔄 Fully WHMCS 8.6 – 8.9.x compatible
+- ✅ Lightweight, efficient, secured
 
 ---
 
 ## 📦 Installation
 
-1. Upload the folder to:  
+1. Upload the `DiscordAlertPro/` folder to:  
    `modules/notifications/DiscordAlertPro/`
 
-2. Folder Structure:
+2. Your folder should look like this:
 
 ```
 DiscordAlertPro/
@@ -47,58 +48,50 @@ DiscordAlertPro/
 │   └── Message.php
 ├── whmcs.json
 ├── 143.key
-└── logo.png (optional)
+├── logo.png
+└── README.md
 ```
 
-3. Go to WHMCS Admin Panel:
-   - Setup → Notifications → Activate "Discord Alert Pro"
-   - Fill in your webhook and settings
-   - Create your notification rules
+3. Go to WHMCS Admin:  
+   - Setup → Notifications  
+   - Activate "Discord Alert Pro"  
+   - Fill in global settings
 
 ---
 
-## ⚙️ Configuration
+## 🔧 How to Create Discord Webhook
 
-### Global Settings:
+Use this official guide from Discord:  
+**https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks**
 
-| Field               | Description                             |
-|---------------------|-----------------------------------------|
-| Webhook URL         | Your Discord webhook link               |
-| Sender Name         | Displayed name in Discord               |
-| Message Color       | HEX (e.g., `3498db` = blue)             |
-| Role ID             | Discord Role ID for mentions            |
-| Avatar URL          | Optional sender avatar image            |
-| Silent Mode         | Enable to block Discord message sending |
+---
 
-### Per Rule Override:
+## 🔧 How to Create Notification Rules in WHMCS
 
-| Field               | Description                             |
-|---------------------|-----------------------------------------|
-| Custom Message      | Override message body                   |
-| Custom Webhook URL  | Send to alternate Discord channel       |
-| Custom Color        | HEX override for that message           |
-| Custom Role ID      | Ping specific role on this message      |
+1. Setup → Notifications → Create Rule  
+2. Select event (e.g. Ticket Reply)  
+3. Set conditions (if needed)  
+4. Select **"Discord Alert Pro"** as the provider  
+5. Customize any per-rule settings  
+6. Save
 
 ---
 
 ## 📸 Discord Message Structure
 
-Each alert sent by **Discord Alert Pro** is displayed in Discord as a beautiful, structured embed.  
-Below is the complete layout and what each part includes:
-
 ```
-🧑‍💻 Ticket Replied: [Ticket Subject]
+🧑‍💻 Ticket Replied: [Subject]
 ────────────────────────────────────
-Responded by: [Staff Name who replied]
-Client Location: [Flag + Country Name]
-Client IP: [IP Address]
-Status: [Emoji + WHMCS Ticket Status]
-Last Reply: [Time ago from WHMCS]
-Date & Time: [Y-m-d | h:i A (Timezone)]
-Department: [WHMCS Ticket Department]
-Priority: [Low / Medium / High]
-Ticket ID: #[Ticket Number]
-Client Name: [Name from ticket]
+Responded by: Kamrul  
+Client Location: 🇧🇩 Bangladesh  
+Client IP: 103.120.21.15  
+Status: 🟡 Answered  
+Last Reply: 2 min ago  
+Date & Time: 2025-04-30 | 05:35 PM (GMT+6)  
+Department: Technical  
+Priority: High  
+Ticket ID: #192  
+Client Name: Rifat Rahman
 
 🔗 Click to View Ticket
 ────────────────────────────────────
@@ -107,47 +100,114 @@ Client Name: [Name from ticket]
 
 ---
 
-## 🔐 Security Lock (`143.key`)
+## ⚙️ Configuration Options
 
-This file prevents unauthorized use or tampering.  
-It must exist at the root of the module with this exact content:
+### Global Settings
 
-```
-143
-```
+| Name            | Description                              |
+|-----------------|------------------------------------------|
+| Webhook URL     | Main Discord webhook                     |
+| Sender Name     | Shown in Discord as username             |
+| Embed Color     | HEX code without # (e.g. `3498db`)       |
+| Role ID         | Discord Role ID to mention               |
+| Avatar URL      | Custom sender avatar                     |
+| Silent Mode     | Disable all messages when enabled        |
 
-Without it, the module will not send any messages.
+### Per Rule Overrides
 
----
-
-## 🔍 Need Help?
-
-- ✅ Check webhook URL validity
-- ✅ Make sure cron is running
-- ✅ Ensure server can access Discord API
-- ✅ Enable module logging if debugging
-
-Contact: [facebook.com/elitekamrul](https://facebook.com/elitekamrul)
-
----
-
-## ⚠️ Disclaimer
-
-This module is developed by **Kamrul** and is **not affiliated** with Discord Inc. or WHMCS LLC.  
-Use at your own risk. Always test in a staging environment before production.
+| Name            | Description                              |
+|-----------------|------------------------------------------|
+| Custom Message  | Override default message body            |
+| Webhook URL     | Send this rule to different channel      |
+| Embed Color     | Use different HEX color                  |
+| Role ID         | Mention different Discord role           |
 
 ---
 
-## 👥 Credits
+## 🧠 Smart Functionalities
 
-- 🛠️ **Developed, Customized & Secured by:**  
-  **Kamrul**  
-  🔗 [https://kamrul.us](https://kamrul.us)  
-  📘 [https://facebook.com/elitekamrul](https://facebook.com/elitekamrul)
+- **Silent Mode**: When enabled, no message is sent. Great for testing or off-hours.
+- **Developer Lock**: If `143.key` is missing or modified, the addon will self-disable.
+- **IP Geo Lookup**: Auto-detects client country using:
+  1. `ip-api.com` (primary)
+  2. `ipwho.is` (fallback)
+- **Country Flag Emoji**: Country code is auto-translated into flag emoji.
+- **Last Reply Calculation**: From WHMCS `lastreply` field → shows e.g. “5 min ago”
+- **File-Based Counter**: (Optional) tracks daily replies without using SQL
+- **Fully file-powered**: No custom DB table created.
 
-- 🧩 **Base Structure Inspired From:**  
-  **William Beacroft** (Original [Discord Notification Module](https://github.com/BillyAB/WHMCS-Discord-Notification-Module))  
-  🔗 [https://billyab.co.uk](https://billyab.co.uk)
+---
 
-This version is a full-featured, re-engineered, and professionally secured upgrade of the base concept by Kamrul with extensive new functionality, smart controls, and WHMCS production-grade compatibility.
+## 🔐 Security Lock: `143.key`
 
+- Required file in addon root  
+- Must contain: `143`  
+- Without it, no notification will be sent  
+- Logs will show: `Developer Lock Missing`
+
+---
+
+## ✅ Compatibility
+
+- ✅ WHMCS 8.6.x → 8.9.x tested  
+- ✅ Works with any PHP 7.4 – 8.1  
+- ❌ No ionCube or encoded code  
+- ✅ Fully Open Source (MIT Protected)
+
+---
+
+## 📜 Changelog
+
+### v1.0.0 – Initial Release
+- Ticket responder name added
+- Country flag from IP lookup
+- Smart status emojis (Open, Answered, etc.)
+- Last reply time auto-calculation
+- Silent mode switch added
+- Developer lock file validation
+- No database dependency
+
+---
+
+## ❓ FAQ
+
+**Can I remove the developer credit?**  
+→ No. Credit is fixed inside embed footer to protect original work.
+
+**Can I use this commercially?**  
+→ Not without permission. This version is MIT-licensed for personal/educational use only.
+
+**Can I modify the code?**  
+→ Yes, as long as it’s not for resale or rebranding without credit.
+
+---
+
+## 🤝 License
+
+This software is provided under a **Custom MIT License**.  
+Free for personal and non-commercial use.
+
+Commercial redistribution or resale is prohibited without license from the author.
+
+See: `LICENSE` file
+
+---
+
+## 🙏 Special Thanks
+
+Original concept & base structure inspired by:  
+**William Beacroft**  
+GitHub: [BillyAB Discord Notifier](https://github.com/BillyAB/WHMCS-Discord-Notification-Module)  
+Respectfully acknowledged with gratitude.
+
+---
+
+## 👤 Author
+
+Made with ❤️ by **Kamrul**  
+🔗 Website: https://kamrul.us  
+📘 Facebook: https://facebook.com/elitekamrul  
+Telegram: @MIH1R  
+Email: Mr.Kamrul61@gmail.com
+
+Support available for customization
