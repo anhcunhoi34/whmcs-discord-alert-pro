@@ -1,0 +1,36 @@
+{
+  "schema": "1.0",
+  "type": "whmcs-notifications",
+  "name": "DiscordAlertPro",
+  "license": "proprietary",
+  "category": "notifications",
+  "description": {
+    "name": "Discord Alert Pro",
+    "tagline": "Advanced Discord alerts from WHMCS",
+    "long": "Smart Discord notifications for WHMCS ticket events with support for staff name, IP flag, silent mode, role ping, and secure lock system.",
+    "features": [
+  "Staff responder name in embed",
+  "Client IP & country flag",
+  "Silent mode toggle",
+  "Test webhook trigger",
+  "Developer lock & UI status",
+  "Color-coded Discord embed",
+  "Role ping via ID",
+  "Compatible with WHMCS 8.6 – 8.9.x",
+  "PHP 7.4 – 8.1 supported"
+]
+
+  },
+  "logo": {
+    "filename": "logo.png"
+  },
+  "support": {
+    "homepage": "https://kamrul.us"
+  },
+  "authors": [
+    {
+      "name": "Kamrul",
+      "homepage": "https://kamrul.us"
+    }
+  ]
+}
